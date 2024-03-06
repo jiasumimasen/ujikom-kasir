@@ -58,6 +58,9 @@
                         <td>20.000</td>
                         <td>5</td>
                         <td>edit hapus</td>
+                        <div>
+                        <a href="{{ route('order') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
                     </tr>
                 </tbody>
             </table>

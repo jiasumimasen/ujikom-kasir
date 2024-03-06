@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
-class UserController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
+    
     {
-        return view('pages.user.index');
+        return redirect()->route('item.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -19,10 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-    
-    {
-        return redirect()->route('user.index')->with('success', 'Data berhasil disimpan');
-    }
+        //
     }
 
     /**
@@ -34,6 +33,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
         ]);
     }
+    
 
     /**
      * Display the specified resource.

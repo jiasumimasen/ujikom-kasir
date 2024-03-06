@@ -59,7 +59,8 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="{{route ('produk')}}"><i class="fa fa-circle-o"></i>Produk</a></li>
-              <li><a href="{{ route('user') }}"><i class="fa fa-circle-o"></i>User</a></li>
+              <li><a href="{{route('user') }}"><i class="fa fa-circle-o"></i>User</a></li>
+              <li><a href="{{route('menu') }}"><i class="fa fa-circle-o"></i>Menu</a></li>
             </ul>
           </li>
         <li class="treeview">
@@ -115,9 +116,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ asset('general')}}"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="{{ asset('general')}}"><i class="fa fa-circle-o"></i> detail laporan</a></li>
             <!-- <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li> -->
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> riwayat transaksi</a></li>
 
         </li>
        
