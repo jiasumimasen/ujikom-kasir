@@ -9,6 +9,9 @@ use App\Models\Barang;
 
 class BarangController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     // Menampilkan halaman input data barang
     public function index()
     {

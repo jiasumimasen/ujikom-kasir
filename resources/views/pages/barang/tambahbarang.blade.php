@@ -1,42 +1,33 @@
 @extends('layout.app')
 @section('content')
-
-
-<div class="container-fluid">
-    <h1>Barang</h1>
-    <div class="card-body">
-      <div class="content">
-          <div class="card card-info card-outline">
-              <div class="card-header">
-                  <h4>Tambah Barang</h4>
-              </div>
-            <div class="card-body">
-
-                <form method="POST" action="{{ route('barang.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <!-- Add your form fields for 'foto', 'nama_barang', 'kategori', 'harga', and 'stok' -->
-                    <div class="form-group">
-                        <label for="nama_barang">Nama Barang:</label>
-                        <input type="text" name="nama_barang" autocomplete="off" autofocus required>
-                    </div>
-                    <div class="form-group">
-                        <label for="harga">Harga:</label>
-                        <input type="number" name="harga" min="0"  autocomplete="off" autofocus required>
-                    </div>
-                    <div class="form-group">
-                        <label for="stok">Stok:</label>
-                        <input type="number" name="stok" min="0" autocomplete="off" autofocus required>
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-
-                </div>
-            </div>
+<h2>Tambah Barang</h2>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Masukkan Data Barang Baru</h3>
         </div>
+        <form method="POST" action="{{ route('barang.store') }}" enctype="multipart/form-data" role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nama_barang">Nama Barang</label>
+                    <input class="form-control" type="text" id="nama_barang" name="nama_barang"
+                        autocomplete="off" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="harga">Harga</label>
+                    <input class="form-control" type="number" id="harga" name="harga" min="0" autocomplete="off"
+                        autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="stok">Stok</label>
+                    <input class="form-control" type="number" id="stok" name="stok" min="0" autocomplete="off"
+                        autofocus required>
+                </div>
+                {{-- <button class="btn btn-primary" type="submit">Simpan</button> --}}
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
-</tbody>
-  @endsection
-</tbody>
-</table>
-</div>
-</div>
+
+    @endsection

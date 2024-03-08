@@ -12,8 +12,8 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user4-128x128.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">SUUUUPER</span>
+              <img src="{{ asset('dist/img/user4-128x128.jpg') }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -21,7 +21,7 @@
                 <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  suupper
+                  {{ Auth::user()->name }}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('kasir_id');
+            $table->foreign('kasir_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->decimal('total_harga');
             $table->timestamps();
         });
     }

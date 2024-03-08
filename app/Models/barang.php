@@ -9,9 +9,15 @@ class Barang extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama_barang', 'harga', 'stok'];
+    protected $fillable = [
+        'nama_barang', 'harga', 'stok'
+    ];
+
+    public function kategori(){
+        $this->belongsTo(Kategori::class);
+    }
 
     // Definisikan nilai kategori yang diperbolehkan
-    public static $kategoriValues = ['makanan', 'minuman'];
+    // public static $kategoriValues = ['makanan', 'minuman'];
 
 }
