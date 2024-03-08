@@ -1,5 +1,4 @@
 @extends('layout.app ')
-    <h1>Pegawai</h1>
 
 @section('content')
 <div class="with-border">

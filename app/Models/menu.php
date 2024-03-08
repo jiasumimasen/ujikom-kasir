@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class menu extends Model
 {
     use HasFactory;
+    
+    protected $guarted = ['id'];
+
+    public function menu()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

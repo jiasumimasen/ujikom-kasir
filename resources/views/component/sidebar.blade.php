@@ -58,20 +58,20 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{route ('produk')}}"><i class="fa fa-circle-o"></i>Produk</a></li>
-              <li><a href="{{route('user') }}"><i class="fa fa-circle-o"></i>User</a></li>
-              <li><a href="{{route('menu') }}"><i class="fa fa-circle-o"></i>Menu</a></li>
+              <li><a href="{{asset ('barang')}}"><i class="fa fa-circle-o"></i>barang</a></li>
             </ul>
           </li>
         <li class="treeview">
           <a href="#">
-          <i class="fa fa-file"></i> <span>Transaksi</span>
+          <i class="fa fa-file"></i> <span>Transaction</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
               <ul class ="treeview-menu">
-                <li><a href="{{ route('order') }}"><i class="fa fa-circle-o"></i>order</a></li>
+                <li><a href="{{ route('transaction') }}"><i class="fa fa-circle-o"></i>transaction</a></li>
+                <li><a href="{{ route('report') }}"><i class="fa fa-circle-o"></i>report</a></li>
+                {{-- <li><a href="{{ route('transaksi') }}"><i class="fa fa-circle-o"></i>transaksi</a></li> --}}
               </ul>
             </span>
           </a>
