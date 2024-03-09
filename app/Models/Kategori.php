@@ -13,7 +13,7 @@ class Kategori extends Model
         'nama'
     ];
 
-    public function produk(){
+    public function barang(){
         $this->hasMany(Barang::class);
     }
 }

@@ -46,13 +46,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('transaksi', TransaksiController::class);
 
     // Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::get('/tambahbarang', [BarangController::class, 'create'])->name('tambahbarang');
-    Route::get('/tambahkategori', [KategoriController::class, 'create'])->name('tambahkategori');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+
     // Route::get('/menus/show', [MenuController::class, 'index'])->name('show');
     // Route::get('/menu', MenuController::class)->middleware('auth')->missing(fn () => redirect()->back());
-    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
-    Route::resource('barang', BarangController::class);
+    // Route::resource('barang', BarangController::class);
     // Route::resource('kategori', KategoriController::class);
+    Route::get('/tambahkategori', [KategoriController::class, 'create'])->name('tambahkategori');
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
     Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');

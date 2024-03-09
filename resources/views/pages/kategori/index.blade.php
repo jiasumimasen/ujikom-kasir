@@ -27,12 +27,12 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama }}</td>
                 <td><div class="btn-group">
-                    <a href="{{ route('kategori.edit', ['id' => $item->id]) }}" class="btn bg-purple"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ route('kategori.edit', ['id' => $item->id]) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                     <form id="delete-form-{{ $item->id }}" action="{{ route('kategori.destroy', ['id' => $item->id]) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
                     </form>
-                    <a href="#" class="btn btn-danger" onclick="event.preventDefault(); if(confirm('Yakin data akan dihapus?')) document.getElementById('delete-form-{{ $item->id }}').submit();">
+                    <a href="#" class="btn btn-danger" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin mengahapus kategori ini?')) document.getElementById('delete-form-{{ $item->id }}').submit();">
                         <i class="fa fa-trash"></i>
                     </a>
                     </div></td>
@@ -41,12 +41,6 @@
 
         </table>
     </div>
-
-</div>
-
-</div>
-</div>
-</section>
 
 </div>
 @endsection

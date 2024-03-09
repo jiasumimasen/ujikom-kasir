@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\Kategori;
 
 class BarangController extends Controller
 {
@@ -15,26 +16,27 @@ class BarangController extends Controller
     // Menampilkan halaman input data barang
     public function index()
     {
-        $barangs = Barang::all();
-        return view('pages.barang.index',['barangs'=> $barangs]);
+        $barangs = Barang::with('kategori')->get();
+        return view('pages.barang.index',['barangs' => $barangs]);
     }
     public function create()
     {   
-
-        return view('pages.barang.tambahbarang');
+        $kategori = Kategori::all();
+        return view('pages.barang.tambahbarang', compact('kategori'));
     }
 
     public function edit($id)
     {
         $barang = Barang::findOrFail($id);
-
-        return redirect()->back()->with('pages.barang.edit', compact('barang'));
+        $kategoris = Kategori::all(); // Mengambil semua data kategori
+        return view('pages.barang.edit', compact('barang', 'kategoris'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'nama_barang' => 'required|string|max:255',
+            'kategori' => 'required',
             'harga' => 'required|numeric|min:0',
             'stok' => 'required|integer|min:0',
         ]);
@@ -46,9 +48,10 @@ class BarangController extends Controller
             'nama_barang' => $request->nama_barang,
             'harga' => $request->harga,
             'stok' => $request->stok,
+            'kategori_id' => $request->kategori,
         ]);
 
-        return redirect()->route('barang.index')->with('success', 'Data barang berhasil diperbarui');
+        return redirect()->route('barang')->with('success', 'Data barang berhasil diperbarui');
     }
 
     public function destroy($id)
@@ -61,21 +64,22 @@ class BarangController extends Controller
 
     // Menyimpan data barang baru
     public function store(Request $request)
-    {
-        $request->validate([
-            'nama_barang' => 'required|string|max:255',
-            'harga' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
-        ]);
-        
+{
+    $request->validate([
+        'nama_barang' => 'required|string|max:255',
+        'harga' => 'required|numeric|min:0',
+        'stok' => 'required|integer|min:0',
+        'kategori' => 'required', // Validasi kategori
+    ]);
 
-        Barang::create([
-            'nama_barang' => $request->nama_barang,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-       
-        ]);
+    Barang::create([
+        'nama_barang' => $request->nama_barang,
+        'harga' => $request->harga,
+        'stok' => $request->stok,
+        'kategori_id' => $request->kategori, // Menyimpan ID kategori
+    ]);
 
-        return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan');
-    }
+    return redirect('/barang')->with('success', 'Data barang berhasil ditambahkan');
+}
+
 }
