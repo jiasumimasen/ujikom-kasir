@@ -28,15 +28,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 Auth::routes();
+// Route::get('/', function () {
+//     return view('pages');
+// });
 Route::middleware(['auth'])->group(function () {
     // Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     // Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
-    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::prefix('user')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('user');
+        Route::get('/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('/', [UserController::class, 'store'])->name('user.store');
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    });
     // Route::get('/order', [OrderController::class, 'index'])->name('order');
     // Route::get('/laporan', [OrderController::class, 'index'])->name('laporan');
     Route::get('/general', [LaporanController::class, 'index'])->name('general');

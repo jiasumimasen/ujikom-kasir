@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\vwProduk;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
@@ -15,7 +16,7 @@ class TransaksiController extends Controller
     public function index()
     {
         // $transaksis = Transaksi::all();
-        $products = Produk::all();
+        $products = Barang::all();
         // if($products){
         //     var_dump($products);die();
             
