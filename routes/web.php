@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,23 +32,36 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Auth::routes();
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth'])->group(function () {
     // Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+    // Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
     Route::get('/user', [UserController::class, 'index'])->name('user');
-    Route::get('/order', [OrderController::class, 'index'])->name('order');
-    Route::get('/laporan', [OrderController::class, 'index'])->name('laporan');
+    // Route::get('/order', [OrderController::class, 'index'])->name('order');
+    // Route::get('/laporan', [OrderController::class, 'index'])->name('laporan');
     Route::get('/general', [LaporanController::class, 'index'])->name('general');
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
 
-    Route::get('/product', [ProductController::class, 'index'])->name('product');
+    // Route::get('/product', [ProductController::class, 'index'])->name('product');
     Route::resource('transaksi', TransaksiController::class);
 
-    Route::get('/report', [ReportController::class, 'index'])->name('report');
+    // Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::get('/tambahbarang', [BarangController::class, 'create'])->name('tambahbarang');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+
     // Route::get('/menus/show', [MenuController::class, 'index'])->name('show');
     // Route::get('/menu', MenuController::class)->middleware('auth')->missing(fn () => redirect()->back());
-    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
-    Route::resource('barang', BarangController::class);
+    // Route::resource('barang', BarangController::class);
+    // Route::resource('kategori', KategoriController::class);
+    Route::get('/tambahkategori', [KategoriController::class, 'create'])->name('tambahkategori');
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::get('kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::put('kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 });

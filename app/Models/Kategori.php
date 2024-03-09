@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaksi extends Model
+class Kategori extends Model
 {
     use HasFactory;
-    protected $table = 'transaksis';
+
     protected $fillable = [
-        'kasir_id','total'
+        'nama'
     ];
 
-    public function kasir(){
-        $this->belongsTo(User::class);
+    public function barang(){
+        $this->hasMany(Barang::class);
     }
 }
