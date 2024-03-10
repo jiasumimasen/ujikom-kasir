@@ -46,6 +46,9 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/laporan', [OrderController::class, 'index'])->name('laporan');
     Route::get('/general', [LaporanController::class, 'index'])->name('general');
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+    Route::post('/transaction', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::post('/cetak', [LaporanController::class, 'cetak'])->name('laporan.cetak');
 
     // Route::get('/product', [ProductController::class, 'index'])->name('product');
     Route::resource('transaksi', TransaksiController::class);
