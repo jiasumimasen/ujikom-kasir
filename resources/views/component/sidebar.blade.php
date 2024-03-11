@@ -60,6 +60,9 @@
             <ul class="treeview-menu">
               <li><a href="{{asset ('barang')}}"><i class="fa fa-circle-o"></i>Barang</a></li>
               <li><a href="{{ route('kategori.index') }}"><i class="fa fa-circle-o"></i>Kategori</a></li>
+              @if (auth()->id() === 1)
+              <li><a href="{{ route('user') }}"><i class="fa fa-circle-o"></i>Petugas</a></li>
+              @endif
             </ul>
           </li>
         <li class="treeview">

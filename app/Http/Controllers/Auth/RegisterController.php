@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = 'user';
 
     /**
      * Create a new controller instance.
@@ -37,8 +37,17 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware(function ($request, $next) {
+            // Periksa apakah pengguna saat ini memiliki akses
+            if (auth()->check() && auth()->user()->id !== 1) {
+                // Jika bukan pengguna dengan id 1, redirect ke halaman lain
+                return redirect()->route('user'); 
+            }
+            
+            return $next($request);
+        });
     }
+    
 
     /**
      * Get a validator for an incoming registration request.
